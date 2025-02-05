@@ -1,0 +1,37 @@
+default:
+  image: python:3.10
+
+stages:
+  - build 
+  - deploy
+
+variables:
+  LANG: C.UTF-8
+
+sphinx_docs:
+  stage: build
+  script:
+    - echo "Building Sphinx documentation"
+    - pip install sphinx sphinx-rtd-theme
+    - sphinx-build -b html ./doc ./public
+  artifacts:
+    paths:
+      - public
+  only:
+    refs:
+      - branches
+    variables:
+      - $CI_COMMIT_BRANCH == "main"
+
+pages:
+  stage: deploy
+  script:
+    - echo "Deploying documentation to GitLab Pages"
+  artifacts:
+    paths:
+      - public/
+  only:
+    refs:
+      - branches
+    variables:
+      - $CI_COMMIT_BRANCH == "main"
