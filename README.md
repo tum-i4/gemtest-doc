@@ -1,6 +1,6 @@
 # GeMTest 💎: Documentation
 
-The GeMTest documentation is hosted on [Github Pages](https://tum-i4.github.io/gemtest-doc/):
+The GeMTest documentation is hosted on [GitHub Pages](https://tum-i4.github.io/gemtest-doc/):
 
 ## Build
 
